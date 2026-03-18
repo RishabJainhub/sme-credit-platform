@@ -29,17 +29,18 @@ np.random.seed(SEED)
 os.makedirs("outputs", exist_ok=True)
 
 # ─────────────────────────────────────────
-# LOAD DATA
+# LOAD DATA (REAL-WORLD CALIBRATED)
 # ─────────────────────────────────────────
-df = pd.read_csv("data/sme_clean.csv")
-print(f"Loaded {len(df)} records from data/sme_clean.csv")
+df = pd.read_csv("data/sme_clean_real.csv")
+print(f"Loaded {len(df)} records from data/sme_clean_real.csv")
 print(f"Class balance — DEFAULT_RISK:\n{df['DEFAULT_RISK'].value_counts().to_string()}\n")
 
 # ─────────────────────────────────────────
 # FEATURE ENGINEERING
 # ─────────────────────────────────────────
-df["LOG_CAP"] = np.log1p(df["AUTHORIZED_CAP_INR"])
-df["HAS_MULTIPLE_DIRECTORS"] = (df["DIRECTOR_COUNT"] > 2).astype(int)
+df["LOG_CAP"] = np.log1p(df["PAID_UP_CAPITAL"])
+df["HAS_MULTIPLE_DIRECTORS"] = (df["DIRECTOR_COUNT"] > 1).astype(int)
+df["IS_METRO"] = (df["STATE"].isin(["Delhi", "Maharashtra", "Karnataka", "Tamil Nadu", "Telangana"])).astype(int)
 
 FEATURES = [
     "AGE_YEARS",
