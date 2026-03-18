@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Raw RBI Excel files (large, re-downloadable)
+rbi_data/*.xlsx
+rbi_data/*.xls
+
+# Streamlit cache
+.streamlit/secrets.toml
+
+# Misc
+*.log
+.env

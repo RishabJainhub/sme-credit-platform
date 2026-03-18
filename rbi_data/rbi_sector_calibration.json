@@ -1,0 +1,67 @@
+{
+  "IT Services": {
+    "blended_risk_score": 0.173,
+    "rbi_credit_jan26_cr": 249749.0,
+    "rbi_yoy_growth_pct": 15.09,
+    "rbi_matched_categories": [
+      "3.2. Computer Software",
+      "3.6. Professional Services"
+    ],
+    "source": "RBI Sectoral Deployment Jan 2026"
+  },
+  "Retail": {
+    "blended_risk_score": 0.221,
+    "rbi_credit_jan26_cr": 1309115.0,
+    "rbi_yoy_growth_pct": 15.91,
+    "rbi_matched_categories": [
+      "3.7.1. Wholesale Trade1",
+      "3.7.2. Retail Trade",
+      "1 Wholesale trade includes food procurement credit outside the food credit consortium."
+    ],
+    "source": "RBI Sectoral Deployment Jan 2026"
+  },
+  "Logistics": {
+    "blended_risk_score": 0.628,
+    "rbi_credit_jan26_cr": 267665.0,
+    "rbi_yoy_growth_pct": 4.26,
+    "rbi_matched_categories": [
+      "3.1. Transport Operators"
+    ],
+    "source": "RBI Sectoral Deployment Jan 2026"
+  },
+  "Manufacturing": {
+    "blended_risk_score": 0.48,
+    "rbi_credit_jan26_cr": 1242432.0,
+    "rbi_yoy_growth_pct": 10.49,
+    "rbi_matched_categories": [
+      "2.2. Food Processing",
+      "2.4. Textiles",
+      "2.4.1. Cotton Textiles",
+      "2.4.2. Jute Textiles",
+      "2.4.3. Man-Made Textiles",
+      "2.4.4. Other Textiles",
+      "2.9. Chemicals and Chemical Products",
+      "2.10. Rubber, Plastic and their Products"
+    ],
+    "source": "RBI Sectoral Deployment Jan 2026"
+  },
+  "F&B": {
+    "blended_risk_score": 0.33,
+    "rbi_credit_jan26_cr": 276010.0,
+    "rbi_yoy_growth_pct": 16.94,
+    "rbi_matched_categories": [
+      "2.2. Food Processing",
+      "2.3. Beverage and Tobacco"
+    ],
+    "source": "RBI Sectoral Deployment Jan 2026"
+  },
+  "Construction": {
+    "blended_risk_score": 0.411,
+    "rbi_credit_jan26_cr": 597880.0,
+    "rbi_yoy_growth_pct": 16.2,
+    "rbi_matched_categories": [
+      "3.8. Commercial Real Estate"
+    ],
+    "source": "RBI Sectoral Deployment Jan 2026"
+  }
+}

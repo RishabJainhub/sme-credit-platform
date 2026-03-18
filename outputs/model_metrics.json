@@ -1,0 +1,8 @@
+{
+  "auc_roc": 0.9527,
+  "test_size": 500,
+  "train_size": 2000,
+  "high_risk_count": 578,
+  "low_risk_count": 1922,
+  "top_feature": "Sector Risk Score"
+}
