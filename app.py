@@ -566,7 +566,7 @@ def kpi_card_animated(value, label, color=INDIGO, prefix="", suffix=""):
 # ─────────────────────────────────────────────────────────────
 # DATA LOAD
 # ─────────────────────────────────────────────────────────────
-@st.cache_data
+@st.cache_data(ttl=3600)
 def load_data():
     base = os.path.dirname(__file__)
     # Prefer the newest generated dataset, fallback to the legacy filename.
@@ -771,7 +771,7 @@ st.markdown(f"""
     <span>·</span>
     <span>AUC {metrics['auc_roc']:.4f}</span>
     <span>·</span>
-    <span style="color:#00D4AA;">● Live RBI</span>
+    <span style="color:#00D4AA;">● RBI Jan 2026 Calibrated</span>
   </div>
 </div>
 """, unsafe_allow_html=True)
@@ -842,7 +842,7 @@ with t1:
         </div>
         <div style="display:flex; align-items:center; gap:8px; justify-content:flex-end;">
             <div style="height:8px; width:8px; background:{EMERALD}; border-radius:50%; box-shadow:0 0 10px {EMERALD};"></div>
-            <span style="font-size:1rem; font-weight:800; color:{WHITE};">Live RBI Calibration</span>
+            <span style="font-size:1rem; font-weight:800; color:{WHITE};">RBI Jan 2026 Calibration</span>
         </div>
       </div>
     </div>
@@ -859,6 +859,10 @@ with t1:
         m1, m2 = st.columns([1.5, 1])
         with m1:
             st.plotly_chart(credit_gauge(float(avg_score), "Global Sentiment"), use_container_width=True, config={"displayModeBar": False})
+            st.markdown(f"""
+            <div style="font-size:0.7rem; color:{SLATE}; text-align:center; margin-top:-10px; opacity:0.8;">
+                <b>Index Methodology:</b> Weighted aggregation of sector-level credit growth vs. real-world default probabilities.
+            </div>""", unsafe_allow_html=True)
         with m2:
             sentiment_msg = "STABLE" if avg_score > 60 else "CAUTION" if avg_score > 45 else "VOLATILE"
             sent_color = TEAL if sentiment_msg == "STABLE" else GOLD if sentiment_msg == "CAUTION" else RED
