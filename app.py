@@ -35,16 +35,15 @@ st.markdown("""
 
   /* ── ROOT VARIABLES ── */
   :root {
-      --bg-deepspace:  #060D18;
-      --bg-midnight:   #0A1628;
-      --bg-panel:      #0E1E34;
-      --border-glass:  rgba(0,201,167,0.12);
-      --border-subtle: rgba(30,58,95,0.6);
-      --glow-teal:     0 0 30px rgba(0,201,167,0.15), 0 0 60px rgba(0,201,167,0.05);
-      --glow-gold:     0 0 25px rgba(255,215,0,0.12);
-      --glow-red:      0 0 25px rgba(255,107,107,0.12);
-      --glass-bg:      rgba(14,30,52,0.65);
-      --glass-border:  rgba(255,255,255,0.06);
+      --bg-deep:      #0A0E1A;
+      --bg-sidebar:   #0D1224;
+      --accent-indigo: #6366F1;
+      --accent-pink:   #EC4899;
+      --success:      #10B981;
+      --warning:      #F59E0B;
+      --danger:       #EF4444;
+      --glass-bg:     rgba(13, 18, 36, 0.52);
+      --glass-border: rgba(255, 255, 255, 0.12);
   }
 
   /* ── MAGIC UI ANIMATIONS ── */
@@ -77,8 +76,8 @@ st.markdown("""
   /* ── BASE ── */
   html, body, [class*="css"] {
       font-family: 'Inter', sans-serif;
-      background-color: var(--bg-deepspace) !important;
-      color: #E8F0FE;
+      background-color: var(--bg-deep) !important;
+      color: #F1F5F9;
   }
 
   /* ── SHIMMER BUTTON ── */
@@ -98,50 +97,45 @@ st.markdown("""
     transform: translateY(-1px);
   }
 
-  /* ── TABS STYLING ── */
+  /* ── TABS (SUI STYLE) ── */
   .stTabs [data-baseweb="tab-list"] {
-      gap: 8px;
-      background-color: transparent;
-      border-bottom: 1px solid var(--border-subtle);
-      margin-bottom: 1.5rem;
+      gap: 24px;
+      padding: 0 1rem;
+      border-bottom: 2px solid var(--glass-border);
+      background: transparent;
+      margin-bottom: 2rem;
   }
   .stTabs [data-baseweb="tab"] {
-      height: 45px;
-      white-space: pre;
-      background-color: rgba(14,30,52,0.4);
-      border-radius: 8px 8px 0 0;
-      color: #8A93A6;
-      font-size: 0.82rem;
+      color: #94A3B8;
       font-weight: 500;
-      border: 1px solid transparent;
-      transition: all 0.3s ease;
-      padding: 0 20px;
-  }
-  .stTabs [data-baseweb="tab"]:hover {
-      background-color: rgba(14,30,52,0.6);
-      color: #F1F5F9;
+      font-size: 0.9rem;
+      border: none;
+      background: transparent;
+      padding-bottom: 12px;
+      transition: all 0.2s;
   }
   .stTabs [aria-selected="true"] {
-      background-color: rgba(0,201,167,0.12) !important;
-      color: #00D4AA !important;
-      border-color: #00D4AA !important;
+      color: var(--accent-indigo) !important;
+      border-bottom: 3px solid var(--accent-indigo) !important;
       font-weight: 700 !important;
+      background: transparent !important;
   }
 
   /* ── PREV CSS REPLACED WITH CLEANER FOR MAGIC UI ── */
   .kpi-card {
-      background: #12151F;
-      border: 1px solid #2D3748;
-      border-radius: 12px;
-      padding: 1.4rem 1.2rem;
-      text-align: center;
+      background: var(--glass-bg);
+      backdrop-filter: blur(6px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
-      transition: all 0.3s ease;
   }
   .kpi-card:hover {
-      border-color: #00D4AA;
+      border-color: rgba(99, 102, 241, 0.4);
       transform: translateY(-4px);
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
   }
   .dot-pattern {
     position: absolute; inset: 0; opacity: 0.05;
@@ -151,20 +145,20 @@ st.markdown("""
 
   /* ── INSIGHT BOX — FROSTED GLASS ── */
   .insight-box {
-      background: linear-gradient(135deg, rgba(0,201,167,0.06) 0%, rgba(0,201,167,0.02) 100%);
-      border: 1px solid rgba(0,201,167,0.18);
-      border-left: 3px solid #00C9A7;
+      background: linear-gradient(135deg, rgba(99,102,241,0.10) 0%, rgba(99,102,241,0.03) 100%);
+      border: 1px solid rgba(99,102,241,0.20);
+      border-left: 3px solid #6366F1;
       border-radius: 12px;
       padding: 0.9rem 1.2rem;
       margin: 0.8rem 0;
       font-size: 0.82rem;
-      color: #B0E8DF;
+      color: #CBD5E1;
       backdrop-filter: blur(6px);
       transition: all 0.3s ease;
   }
   .insight-box:hover {
-      border-color: rgba(0,201,167,0.35);
-      box-shadow: 0 4px 20px rgba(0,201,167,0.08);
+      border-color: rgba(99,102,241,0.35);
+      box-shadow: 0 4px 18px rgba(99,102,241,0.12);
   }
 
   /* ── OPPORTUNITY BOX ── */
@@ -343,11 +337,9 @@ st.markdown("""
     letter-spacing: 0.1em;
   }
   .signal-line {
-    animation: typing 0.8s steps(40, end);
-    white-space: nowrap;
-    overflow: hidden;
+    white-space: normal;
+    overflow: visible;
   }
-  @keyframes typing { from { width: 0 } to { width: 100% } }
 
   /* ── SECTOR OUTLOOK CARDS ── */
   .outlook-card {
@@ -371,73 +363,104 @@ st.markdown("""
       linear-gradient(90deg, rgba(30,58,95,0.05) 1px, transparent 1px);
     background-size: 60px 60px;
   }
+
+
+  /* ── RESPONSIVE LAYOUT ── */
+  @media (max-width: 1024px) {
+    .command-center {
+      grid-template-columns: 1fr;
+      gap: 0.9rem;
+    }
+    .kpi-card { padding: 1rem; }
+    .main-header h1 { font-size: 1.45rem !important; }
+  }
+
+  @media (max-width: 768px) {
+    .stTabs [data-baseweb="tab-list"] {
+      gap: 10px;
+      padding: 0 0.25rem;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .stTabs [data-baseweb="tab"] {
+      font-size: 0.78rem;
+      padding-bottom: 8px;
+    }
+  }
 </style>
 """, unsafe_allow_html=True)
 
-# ── MAGIC UI COLOR SYSTEM ──
-TEAL     = "#00D4AA"
-TEAL_LT  = "#00E8BF"
-BLUE     = "#4A90D9"
-GOLD     = "#FFA500"
-RED      = "#FF4B4B"
-PURPLE   = "#A855F7"
-ORANGE   = "#FF8C00"
-WHITE    = "#F1F5F9"
-GREY     = "#8A93A6"
+# ── DESIGN TOKENS (MAGIC UI 2.0) ──
+INDIGO   = "#6366F1"
+PINK     = "#EC4899"
+EMERALD  = "#10B981"
+AMBER    = "#F59E0B"
+RED      = "#EF4444"
+SLATE    = "#94A3B8"
+NAVY     = "#0A0E1A"
+WHITE    = "#F8FAFC"
+
+# Legacy Aliases to prevent crashes
+TEAL    = EMERALD
+BLUE    = INDIGO
+PURPLE  = PINK
+GOLD    = AMBER
+ORANGE  = AMBER
+GREY    = SLATE
+TEAL_LT = EMERALD
 
 SECTOR_COLORS = {
-    "Manufacturing": TEAL,
-    "Retail":        BLUE,
-    "IT Services":   PURPLE,
-    "Logistics":     GOLD,
+    "Manufacturing": INDIGO,
+    "Retail":        PINK,
+    "IT Services":   EMERALD,
+    "Logistics":     AMBER,
     "F&B":           RED,
-    "Construction":  ORANGE,
+    "Construction":  SLATE,
 }
 
-# ── MAGIC UI CHART DEFAULTS ──
+# ── PLOTLY MODERN THEME ──
 CHART_BASE = dict(
     paper_bgcolor="rgba(0,0,0,0)",
     plot_bgcolor="rgba(0,0,0,0)",
-    font=dict(family="Inter", color="#CBD5E1", size=11),
-    margin=dict(l=12, r=12, t=36, b=12),
+    hovermode="x unified",
+    font=dict(family="Inter", color=SLATE, size=11),
+    margin=dict(l=20, r=20, t=40, b=20),
     xaxis=dict(
         showgrid=False,
         zeroline=False,
-        linecolor="#2D3748",
-        tickfont=dict(color="#8A93A6", size=10),
+        tickfont=dict(size=10, color=SLATE),
+        title_font=dict(size=11, color=SLATE)
     ),
     yaxis=dict(
         showgrid=True,
-        gridcolor="#1a1f2e",
-        gridwidth=0.4,
+        gridcolor="rgba(255,255,255,0.05)",
         zeroline=False,
-        linecolor="#2D3748",
-        tickfont=dict(color="#8A93A6", size=10),
+        tickfont=dict(size=10, color=SLATE)
     ),
     legend=dict(
         bgcolor="rgba(0,0,0,0)",
-        borderwidth=0,
-        font=dict(size=10, color="#8A93A6"),
+        font=dict(size=10, color=SLATE)
     ),
-    bargap=0.35,
-    bargroupgap=0.08,
-    hoverlabel=dict(
-        bgcolor="#1E2130",
-        bordercolor="#2D3748",
-        font=dict(family="Inter", size=11, color="#F1F5F9"),
-    ),
+    colorway=[INDIGO, PINK, EMERALD, AMBER, RED, SLATE]
 )
 
-# Legacy aliases for backward compatibility
-CHART_LAYOUT = CHART_BASE
-AXIS_STYLE   = dict(showgrid=True, gridcolor="#1a1f2e")
-
 def styled_chart(fig):
-    """Apply Magic UI global theme to any plotly figure."""
+    """
+    Applies the global CHART_BASE layout and premium design tokens.
+    Uses try-except to handle traces that don't support marker_line_width (like Heatmaps).
+    """
     fig.update_layout(**CHART_BASE)
-    # Only apply marker width to relevant types (bar, scatter, pie, violin)
-    fig.update_traces(marker_line_width=0, selector=dict(type=["bar", "scatter", "pie", "violin"]))
-    fig.update_traces(selector=dict(type="bar"), marker_cornerradius=4)
+    try:
+        fig.update_traces(marker_line_width=0)
+    except Exception:
+        pass
+    
+    # ── ROUNDED CORNERS FOR BARS (MAGIC UI 2.0) ──
+    if fig.data:
+        try:
+            fig.update_traces(selector=dict(type="bar"), marker_cornerradius=8)
+        except Exception:
+            pass
     return fig
 
 def render_treemap(df: pd.DataFrame) -> None:
@@ -472,30 +495,31 @@ def apply_chart_style(fig, title="", height=350):
     return fig
 
 def credit_gauge(score: float, title: str = "Avg Credit Score") -> go.Figure:
-    color = "#00D4AA" if score >= 65 else "#FFA500" if score >= 45 else "#FF4B4B"
+    color = EMERALD if score >= 65 else AMBER if score >= 45 else RED
     fig = go.Figure(go.Indicator(
         mode="gauge+number",
-        value=score,
-        number={"font": {"size": 26, "color": "#F1F5F9", "family": "Inter"}, "suffix": "/100"},
-        title={"text": title, "font": {"size": 11, "color": "#8A93A6", "family": "Inter"}},
+        value=float(score),
+        number={"font": {"size": 32, "color": WHITE, "family": "Inter"}, "suffix": "/100"},
+        title={"text": title, "font": {"size": 11, "color": SLATE}},
         gauge={
-            "axis": {"range": [0, 100], "tickcolor": "#2D3748", "tickfont": {"color": "#8A93A6", "size": 9}},
+            "axis": {"range": [0, 100], "tickvals": [0, 25, 45, 65, 85, 100], "tickfont": {"color": SLATE, "size": 9}},
             "bar": {"color": color, "thickness": 0.22},
-            "bgcolor": "#12151F",
+            "bgcolor": "rgba(0,0,0,0)",
             "borderwidth": 0,
             "steps": [
-                {"range": [0,  45],  "color": "rgba(255,75,75,0.12)"},
-                {"range": [45, 65],  "color": "rgba(255,165,0,0.10)"},
-                {"range": [65, 100], "color": "rgba(0,212,170,0.08)"},
+                {"range": [0, 45], "color": "rgba(239, 68, 68, 0.10)"},
+                {"range": [45, 65], "color": "rgba(245, 158, 11, 0.10)"},
+                {"range": [65, 100], "color": "rgba(16, 185, 129, 0.10)"},
             ],
-            "threshold": {"line": {"color": "#4A90D9", "width": 2}, "thickness": 0.75, "value": 65},
+            "threshold": {"line": {"color": INDIGO, "width": 2}, "thickness": 0.75, "value": 65},
         },
     ))
     fig.update_layout(
-        paper_bgcolor="rgba(0,0,0,0)", 
-        plot_bgcolor="rgba(0,0,0,0)", 
-        height=240, 
-        margin=dict(l=80, r=80, t=60, b=20)
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        height=220,
+        margin=dict(l=30, r=30, t=55, b=10),
+        font=dict(family="Inter")
     )
     return fig
 
@@ -506,44 +530,36 @@ def animated_risk_bars(sector_risk_dict: dict) -> str:
     
     for i, (sector, score) in enumerate(sorted_items):
         pct = int(score * 100)
-        color = RED if score > 0.50 else GOLD if score > 0.35 else TEAL
-        delay = i * 0.12
-        # Use single lines or lstrip to avoid Streamlit interpreting leading spaces as code blocks
+        color = RED if score > 0.50 else AMBER if score > 0.35 else INDIGO
+        delay = i * 0.1
         bars_html += f"""
-<div style="margin-bottom:1rem;">
-  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.35rem;">
-    <span style="font-size:0.82rem; font-weight:500; color:#CBD5E1;">{sector}</span>
-    <span style="font-size:0.82rem; font-weight:700; color:{color};">{score:.2f} NPA</span>
+<div style="margin-bottom:1.25rem;">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+    <span style="font-size:0.85rem; font-weight:600; color:{SLATE};">{sector}</span>
+    <span style="font-size:0.85rem; font-weight:800; color:{color};">{score:.2f} NPA</span>
   </div>
-  <div style="background:#12151F; border-radius:999px; height:7px; overflow:hidden; border:1px solid #1E2130;">
-    <div style="height:100%; width:0; border-radius:999px; background:linear-gradient(90deg, {color}55 0%, {color} 100%);
-                animation: fillBar_{i} 1.0s ease-out {delay}s forwards;"></div>
+  <div style="background:rgba(255,255,255,0.03); border-radius:10px; height:8px; overflow:hidden; border:1px solid var(--glass-border);">
+    <div style="height:100%; width:0%; border-radius:10px; background:linear-gradient(90deg, {color}44 0%, {color} 100%);
+                animation: fill_{i} 1s cubic-bezier(0.4,0,0.2,1) {delay}s forwards;"></div>
   </div>
 </div>
-<style>@keyframes fillBar_{i} {{ from {{ width: 0%; }} to {{ width: {pct}%; }} }}</style>""".strip()
+<style>@keyframes fill_{i} {{ from {{ width: 0%; }} to {{ width: {pct}%; }} }}</style>""".strip()
 
-    return f'<div style="background:#1E2130; border:1px solid #2D3748; border-radius:12px; padding:1.25rem 1.5rem;">{bars_html}</div>'
+    return f'<div class="chart-container">{bars_html}</div>'
 
 
-def kpi_card_animated(value, label, color="#00D4AA", prefix="", suffix=""):
+def kpi_card_animated(value, label, color=INDIGO, prefix="", suffix=""):
     return f"""
     <div class="kpi-card">
-      <div class="dot-pattern"></div>
-      <div style="position:relative; font-size:2rem; font-weight:800; color:{color};
-                  animation: countUp 1.2s ease-out; font-variant-numeric: tabular-nums;">
+      <div style="font-size:2.2rem; font-weight:900; color:{color}; letter-spacing:-0.03em;
+                  animation: countUp 0.8s cubic-bezier(0.4,0,0.2,1); font-variant-numeric: tabular-nums;">
         {prefix}{value}{suffix}
       </div>
-      <div style="position:relative; font-size:0.68rem; font-weight:600; letter-spacing:0.1em;
-                  text-transform:uppercase; color:#8A93A6; margin-top:0.3rem;">
+      <div style="font-size:0.75rem; font-weight:700; letter-spacing:0.05em;
+                  text-transform:uppercase; color:{SLATE}; margin-top:0.4rem;">
         {label}
       </div>
     </div>
-    <style>
-      @keyframes countUp {{
-        from {{ opacity:0; transform:translateY(12px); }}
-        to   {{ opacity:1; transform:translateY(0);    }}
-      }}
-    </style>
     """
 
 
@@ -630,7 +646,7 @@ def load_data():
         with open(os.path.join(base, "outputs", "model_metrics.json")) as f:
             metrics = json.load(f)
     except Exception:
-        metrics = {"auc_roc": 0.9527, "top_feature": "Sector Risk Score"}
+        metrics = {"auc_roc": 0.0, "top_feature": "Sector Risk Score"}
         
     # Load real RBI calibration data
     try:
@@ -646,7 +662,12 @@ def load_data():
         
     return df, metrics, rbi_macro, rbi_sectors
 
-df, metrics, rbi_macro, rbi_sectors = load_data()
+try:
+    df, metrics, rbi_macro, rbi_sectors = load_data()
+except Exception as e:
+    st.error(f"Failed to load dataset or metrics: {e}")
+    st.info("Check files under data/, outputs/, and rbi_data/ then rerun the app.")
+    st.stop()
 
 CREDIT_THRESHOLD    = 65
 OPPORTUNITY_CAP_INR = 5_000_000
@@ -671,60 +692,62 @@ industry_palette = {
 # SIDEBAR — FROSTED GLASS
 # ─────────────────────────────────────────────────────────────
 with st.sidebar:
-    st.markdown("""
+    st.markdown(f"""
     <div style="
-      background: linear-gradient(135deg, #12151F, #1a1f2e);
-      border: 1px solid #2D3748;
-      border-radius: 12px;
+      background: var(--bg-sidebar);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
       padding: 1.5rem;
-      text-align: center;
-      margin-bottom: 1rem;
+      text-align: left;
+      margin-bottom: 2rem;
       position: relative;
       overflow: hidden;
     ">
-      <div class="dot-pattern" style="opacity:0.07; background-image: radial-gradient(circle, #00D4AA 1px, transparent 1px);"></div>
-      <div style="position:relative; font-size:1.1rem; font-weight:800; color:#F1F5F9; letter-spacing:-0.5px;">
-        India SME Credit Risk
+      <div style="font-size:1.2rem; font-weight:900; color:{INDIGO}; letter-spacing:-0.03em;">
+        SME INFLECTION
       </div>
-      <div style="position:relative; font-size:0.7rem; color:#8A93A6; margin-top:0.25rem; font-weight:600; letter-spacing:1px;">
-        BENGALURU · 2026
+      <div style="font-size:0.75rem; color:#64748B; font-weight:600; letter-spacing:0.05em; margin-top:0.2rem;">
+        CREDIT INTELLIGENCE 2026
       </div>
-      <div style="position:relative; margin-top:0.8rem; font-size:1.8rem;">🇮🇳</div>
+      <div style="margin-top:1.2rem; display:flex; align-items:center; gap:8px;">
+        <span style="font-size:1.5rem;">🇮🇳</span>
+        <div style="height:1px; flex:1; background:linear-gradient(90deg, {INDIGO}, transparent);"></div>
+      </div>
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("<br>", unsafe_allow_html=True)
     st.markdown(f"""
-    <div class="sidebar-stats">
-        <div class="stat-row">
-            <span><span class="stat-icon">📁</span> SME Records</span>
-            <span class="stat-value" style="color:#00C9A7;">{total:,}</span>
+    <div style="padding: 0 0.5rem;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:1rem; font-size:0.85rem;">
+            <span style="color:{SLATE};">📁 Records</span>
+            <span style="color:{WHITE}; font-weight:700;">{total:,}</span>
         </div>
-        <div class="stat-row">
-            <span><span class="stat-icon">🏙️</span> Indian States</span>
-            <span class="stat-value" style="color:#4A90D9;">{df['State'].nunique()}</span>
+        <div style="display:flex; justify-content:space-between; margin-bottom:1rem; font-size:0.85rem;">
+            <span style="color:{SLATE};">🏙️ States</span>
+            <span style="color:{PINK}; font-weight:700;">{df['State'].nunique()}</span>
         </div>
-        <div class="stat-row">
-            <span><span class="stat-icon">🏭</span> Sectors</span>
-            <span class="stat-value" style="color:#FFD700;">{df['Sector'].nunique()}</span>
+        <div style="display:flex; justify-content:space-between; margin-bottom:1rem; font-size:0.85rem;">
+            <span style="color:{SLATE};">🏭 Sectors</span>
+            <span style="color:{AMBER}; font-weight:700;">{df['Sector'].nunique()}</span>
         </div>
-        <div class="stat-row">
-            <span><span class="stat-icon">🤖</span> XGBoost AUC</span>
-            <span class="stat-value" style="color:#00C9A7;">{metrics['auc_roc']:.4f}</span>
+        <div style="display:flex; justify-content:space-between; margin-bottom:1rem; font-size:0.85rem;">
+            <span style="color:{SLATE};">🤖 Model AUC</span>
+            <span style="color:{EMERALD}; font-weight:700;">{metrics['auc_roc']:.4f}</span>
         </div>
-        <div class="stat-row">
-            <span><span class="stat-icon">💰</span> Opportunity SMEs</span>
-            <span class="stat-value" style="color:#FFD700;">{opp_count}</span>
-        </div>
-        <div class="stat-row">
-            <span><span class="live-dot"></span> RBI Data</span>
-            <span class="stat-value" style="color:#00E8BF;">Live</span>
+        <div style="display:flex; justify-content:space-between; margin-bottom:1rem; font-size:0.85rem;">
+            <span style="color:{SLATE};">🟢 Status</span>
+            <span style="color:{EMERALD}; font-weight:700; display:flex; align-items:center; gap:4px;">
+                Live Sync
+            </span>
         </div>
     </div>
-    <div style="margin-top:1rem; padding:0.6rem; text-align:center;
-                background:rgba(255,107,107,0.06); border-radius:10px;
-                border:1px solid rgba(255,107,107,0.12);">
-        <span style="font-size:0.68rem; color:#FF9999;">⚠️ Mixed mode: MCA/RBI real where available; predictive risk fields are engineered</span>
+    <div style="margin-top:2rem; padding:0.75rem; background:rgba(99,102,241,0.05); border:1px solid rgba(99,102,241,0.1); border-radius:12px;">
+        <div style="font-size:0.65rem; color:{INDIGO}; font-weight:800; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px;">
+            Calibration Note
+        </div>
+        <div style="font-size:0.65rem; color:{SLATE}; line-height:1.4;">
+            RBI Sectoral Deployment (Jan '26) used for base weights. Predictive scoring uses XGBoost synthetic refinement.
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -754,9 +777,18 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown(f"""
-<div class="main-header">
-    <h1>🇮🇳 India SME Credit Risk & Growth Intelligence Platform</h1>
-    <p>Analysing {total:,} Indian SMEs across {df['Sector'].nunique()} sectors · {df['State'].nunique()} states · Real-company backbone + engineered risk layer · Bengaluru, 2026</p>
+<div style="
+    background: linear-gradient(90deg, {INDIGO}, {PINK});
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+">
+    <h1 style="margin:0; font-size:2rem; font-weight:900; letter-spacing:-0.04em;">
+        SME INFLECTION <span style="font-weight:300;">| Intelligence Hub</span>
+    </h1>
+</div>
+<div style="font-size:0.85rem; color:{SLATE}; font-weight:500; margin-bottom:2rem; letter-spacing:0.01em;">
+    Analysing {total:,} Indian SMEs across {df['Sector'].nunique()} sectors · {df['State'].nunique()} states · RBI Jan '26 Calibrated
 </div>
 """, unsafe_allow_html=True)
 
@@ -772,11 +804,21 @@ t1, t2, t3, t4, t5, t6, t7, t8 = st.tabs([
     "RBI Data",
 ])
 
-st.markdown("""
-<div class="warn-box" style="margin-top:0.9rem;">
-    ✅ <b>Real/Fetchable:</b> company master records, state, capital, registration date, RBI macro/sector tables.
-    &nbsp;|&nbsp;
-    ⚙️ <b>Engineered/Predictive:</b> credit_score, default_risk, is_opportunity and model outputs.
+st.markdown(f"""
+<div style="
+    display: flex; gap: 12px; margin-bottom: 2rem; padding: 0.75rem 1rem;
+    background: rgba(99, 102, 241, 0.04); border: 1px solid rgba(99, 102, 241, 0.1);
+    border-radius: 12px; font-size: 0.8rem; align-items: center;
+">
+    <span style="color:{INDIGO}; font-weight:800; text-transform:uppercase; letter-spacing:0.05em;">Source Accuracy</span>
+    <span style="height:12px; width:1px; background:rgba(255,255,255,0.1);"></span>
+    <span style="color:{SLATE};">
+        <b style="color:{WHITE};">Real Data:</b> MCA Master Records | State | Capital | RBI Macro Tables
+    </span>
+    <span style="height:12px; width:1px; background:rgba(255,255,255,0.1);"></span>
+    <span style="color:{SLATE};">
+        <b style="color:{WHITE};">Engineered:</b> Credit Scoring | Risk Proxies | Sentiment Analysis
+    </span>
 </div>
 """, unsafe_allow_html=True)
 
@@ -784,15 +826,24 @@ st.markdown("""
 #  PAGE 1 — EXECUTIVE OVERVIEW
 # ══════════════════════════════════════════════════════════════
 with t1:
-    st.markdown("""
-    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:1.5rem;">
+    st.markdown(f"""
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:2.5rem;">
       <div>
-        <h2 style="margin:0; font-size:1.8rem; font-weight:900; letter-spacing:-0.8px;">Command Center</h2>
-        <p style="margin:2px 0 0; color:#8A93A6; font-size:0.85rem;">Global Risk Sentiment & Intelligence Hub</p>
+        <h2 style="margin:0; font-size:2.4rem; font-weight:900; letter-spacing:-0.05em; color:{WHITE};">
+            Command <span style="color:{INDIGO};">Center</span>
+        </h2>
+        <p style="margin:4px 0 0; color:{SLATE}; font-size:1rem; font-weight:500;">
+            Real-Time Sector Risk & Executive Sentiment Hub
+        </p>
       </div>
       <div style="text-align:right;">
-        <div style="font-size:0.65rem; color:#475569; font-weight:700; text-transform:uppercase; letter-spacing:0.1em;">Last Updated</div>
-        <div style="font-size:0.8rem; color:#00D4AA; font-weight:600;">MARCH 19, 2026 · 10:45 AM</div>
+        <div style="font-size:0.75rem; color:{SLATE}; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:4px;">
+            System Precision
+        </div>
+        <div style="display:flex; align-items:center; gap:8px; justify-content:flex-end;">
+            <div style="height:8px; width:8px; background:{EMERALD}; border-radius:50%; box-shadow:0 0 10px {EMERALD};"></div>
+            <span style="font-size:1rem; font-weight:800; color:{WHITE};">Live RBI Calibration</span>
+        </div>
       </div>
     </div>
     """, unsafe_allow_html=True)
@@ -830,20 +881,22 @@ with t1:
         i1, i2 = st.columns(2)
         with i1:
             st.markdown(f"""
-            <div style="position: relative; background: #1E2130; border-radius: 12px; padding: 1.2rem; overflow: hidden; border: 1px solid rgba(255,107,107,0.3); height:140px;">
-              <div style="position:absolute; inset:0; background: linear-gradient(135deg, #FF4B4B, #FF8C00); opacity: 0.04;"></div>
-              <div style="position:relative; font-size:0.65rem; color:#FF4B4B; font-weight:700; text-transform:uppercase;">Risk Flashpoint</div>
-              <div style="position:relative; font-size:1.1rem; font-weight:800; color:#F1F5F9; margin-top:0.4rem;">{riskiest_sector} · UP</div>
-              <div style="position:relative; font-size:0.75rem; color:#8A93A6; margin-top:0.4rem;">Highest NPA volatility detected in non-metro construction hubs.</div>
+            <div class="kpi-card" style="border-left:4px solid {PINK}; height:140px;">
+              <div style="font-size:0.75rem; color:{PINK}; font-weight:800; text-transform:uppercase; letter-spacing:0.04em;">Risk Flashpoint</div>
+              <div style="font-size:1.3rem; font-weight:900; color:{WHITE}; margin-top:0.6rem;">{riskiest_sector} · UP</div>
+              <div style="font-size:0.85rem; color:{SLATE}; margin-top:0.4rem; line-height:1.4;">
+                Maximum NPA probability detected in non-metro construction clusters.
+              </div>
             </div>
             """, unsafe_allow_html=True)
         with i2:
             st.markdown(f"""
-            <div style="position: relative; background: #1E2130; border-radius: 12px; padding: 1.2rem; overflow: hidden; border: 1px solid rgba(0,212,170,0.3); height:140px;">
-              <div style="position:absolute; inset:0; background: linear-gradient(135deg, #00D4AA, #4A90D9); opacity: 0.04;"></div>
-              <div style="position:relative; font-size:0.65rem; color:#00D4AA; font-weight:700; text-transform:uppercase;">Growth Signal</div>
-              <div style="position:relative; font-size:1.1rem; font-weight:800; color:#F1F5F9; margin-top:0.4rem;">{safest_sector} · MH</div>
-              <div style="position:relative; font-size:0.75rem; color:#8A93A6; margin-top:0.4rem;">Prime candidates for medium-term credit deployment identified.</div>
+            <div class="kpi-card" style="border-left:4px solid {INDIGO}; height:140px;">
+              <div style="font-size:0.75rem; color:{INDIGO}; font-weight:800; text-transform:uppercase; letter-spacing:0.04em;">Growth Signal</div>
+              <div style="font-size:1.3rem; font-weight:900; color:{WHITE}; margin-top:0.6rem;">{safest_sector} · MH</div>
+              <div style="font-size:0.85rem; color:{SLATE}; margin-top:0.4rem; line-height:1.4;">
+                Tier-1 credit deployment opportunities identified in high-liquidity zones.
+              </div>
             </div>
             """, unsafe_allow_html=True)
 
@@ -855,22 +908,17 @@ with t1:
         st.markdown("<div style='height:0.8rem;'></div>", unsafe_allow_html=True)
         st.markdown(kpi_card_animated(f"{pct_creditworthy:.1f}", "Growth %", color="#00D4AA", suffix="%"), unsafe_allow_html=True)
 
-    # LIVE SIGNAL FEED (Terminal)
-    signals = [
-        f"Scanning {total} entities for liquidity markers...",
-        f"Sector Alert: {riskiest_sector} volatility increased by 4.2% in northern states.",
-        f"Opportunity Detected: {opp_count} Micro-SMEs meeting Tier-1 credit standards.",
-        "RBI Macro Sync: Calibration baseline updated to Jan 2026 levels.",
-        "Anomaly detected in Uttar Pradesh Construction cluster — investigating..."
-    ]
-    signal_line = signals[int(st.session_state.get('signal_idx', 0)) % len(signals)]
+    # SYSTEM STATUS FEED (static, avoids unnecessary rerenders)
     st.markdown(f"""
-    <div class="signal-feed">
-      <div class="signal-line"> >> {signal_line}</div>
+    <div style="
+        background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.20);
+        border-radius: 10px; padding: 0.8rem 1rem; font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem; color:{WHITE};
+    ">
+      <span style="color:{INDIGO}; font-weight:700;">SYSTEM STATUS:</span>
+      RBI sync active · {opp_count} opportunity SMEs identified · Watchlist sector: {riskiest_sector}
     </div>
     """, unsafe_allow_html=True)
-    if 'signal_idx' not in st.session_state: st.session_state.signal_idx = 0
-    st.session_state.signal_idx += 1
 
     st.markdown("<br>", unsafe_allow_html=True)
 
@@ -897,7 +945,7 @@ with t1:
                 y=risk_by_sector.get(risk_val, pd.Series([0]*len(risk_by_sector))).tolist(),
                 marker=dict(color=color, opacity=0.88)
             ))
-        fig_risk.update_layout(**CHART_LAYOUT, height=280, barmode="group", title=dict(text="<b>Risk by Industry</b>", font=dict(size=13, color=WHITE), x=0))
+        fig_risk.update_layout(**CHART_BASE, height=280, barmode="group", title=dict(text="<b>Risk by Industry</b>", font=dict(size=13, color=WHITE), x=0))
         st.plotly_chart(fig_risk, use_container_width=True, config={"displayModeBar": False})
 
 
@@ -905,10 +953,16 @@ with t1:
 #  PAGE 2 — GEOGRAPHIC INTELLIGENCE
 # ══════════════════════════════════════════════════════════════
 with t2:
-    st.markdown("""
-    <div class="page-header">
-        <h2>🗺️ Geographic Intelligence</h2>
-        <p>Real state distribution + engineered scoring/default hotspot views</p>
+    st.markdown(f"""
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:2.5rem;">
+      <div>
+        <h2 style="margin:0; font-size:2rem; font-weight:900; letter-spacing:-0.04em; color:{WHITE};">
+            Geographic <span style="color:{PINK};">Intelligence</span>
+        </h2>
+        <p style="margin:4px 0 0; color:{SLATE}; font-size:1rem; font-weight:500;">
+            State Distribution & Risk Hotspot Analysis
+        </p>
+      </div>
     </div>""", unsafe_allow_html=True)
 
     state_avg    = df.groupby("State")["credit_score"].mean().sort_values(ascending=False)
@@ -984,18 +1038,41 @@ with t2:
         st.plotly_chart(fig_s3, use_container_width=True, config={"displayModeBar": False})
 
     opp_count_nm = df[(df["credit_score"] > CREDIT_THRESHOLD) & (df["is_metro"]==0)].groupby("State").size().max()
-    st.markdown(f"""<div class="opp-box">🌟 <b>Highest Non-Metro Opportunity State: {opp_state_top}</b> — {opp_count_nm} creditworthy SMEs outside metros, likely underserved by urban-focused lenders.</div>""", unsafe_allow_html=True)
+    st.markdown(f"""
+    <div style="
+        margin-top:2rem; padding:1.2rem; background:rgba(236,72,153,0.05); 
+        border:1px solid rgba(236,72,153,0.1); border-radius:16px;
+        display:flex; align-items:center; gap:16px;
+    ">
+        <span style="font-size:2rem;">🌟</span>
+        <div>
+            <div style="font-size:0.7rem; font-weight:800; text-transform:uppercase; color:{PINK}; letter-spacing:0.05em; margin-bottom:4px;">
+                Unprocessed Growth Cluster
+            </div>
+            <div style="font-size:0.95rem; color:{WHITE}; font-weight:600;">
+                {opp_state_top} leads in non-metro creditworthy SMEs ({opp_count_nm}).
+            </div>
+            <div style="font-size:0.85rem; color:{SLATE}; margin-top:2px;">
+                Significant opportunity for credit expansion outside urban Tier-1 hubs.
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 
 # ══════════════════════════════════════════════════════════════
 #  PAGE 3 — SECTOR RISK ANALYSIS
 # ══════════════════════════════════════════════════════════════
 with t3:
-    st.markdown("""
-    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:1.5rem;">
+    st.markdown(f"""
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:2.5rem;">
       <div>
-        <h2 style="margin:0; font-size:1.8rem; font-weight:900; letter-spacing:-0.8px;">Growth Intelligence</h2>
-        <p style="margin:2px 0 0; color:#8A93A6; font-size:0.85rem;">RBI Sectoral Deployment vs. Platform Credit Signaling</p>
+        <h2 style="margin:0; font-size:2rem; font-weight:900; letter-spacing:-0.04em; color:{WHITE};">
+            Sector <span style="color:{INDIGO};">Risk Analysis</span>
+        </h2>
+        <p style="margin:4px 0 0; color:{SLATE}; font-size:1rem; font-weight:500;">
+            RBI Sectoral Deployment vs. Platform Credit Signaling
+        </p>
       </div>
     </div>
     """, unsafe_allow_html=True)
@@ -1006,26 +1083,26 @@ with t3:
     # Logic for Outlook
     with o1:
         st.markdown(f"""
-        <div class="outlook-card bullish">
-          <div style="font-size:0.65rem; font-weight:700; text-transform:uppercase; color:#8A93A6;">Top Expansion Signal</div>
-          <div style="font-size:1.1rem; font-weight:800; margin-top:0.4rem;">{safest_sector}</div>
-          <div style="font-size:0.75rem; color:#64748B; margin-top:0.3rem;">Reliable yields + low structural risk score (0.20).</div>
+        <div class="kpi-card" style="border-left:4px solid {INDIGO};">
+          <div style="font-size:0.7rem; font-weight:800; text-transform:uppercase; color:{INDIGO}; letter-spacing:0.04em;">Expansion Signal</div>
+          <div style="font-size:1.15rem; font-weight:900; margin-top:0.6rem; color:{WHITE};">{safest_sector}</div>
+          <div style="font-size:0.75rem; color:{SLATE}; margin-top:0.4rem; line-height:1.4;">Reliable yields + low structural risk score.</div>
         </div>
         """, unsafe_allow_html=True)
     with o2:
         st.markdown(f"""
-        <div class="outlook-card bearish">
-          <div style="font-size:0.65rem; font-weight:700; text-transform:uppercase; color:#8A93A6;">Volatility Alert</div>
-          <div style="font-size:1.1rem; font-weight:800; margin-top:0.4rem;">{riskiest_sector}</div>
-          <div style="font-size:0.75rem; color:#64748B; margin-top:0.3rem;">Rising NPAs and inconsistent credit discipline detected.</div>
+        <div class="kpi-card" style="border-left:4px solid {RED};">
+          <div style="font-size:0.7rem; font-weight:800; text-transform:uppercase; color:{RED}; letter-spacing:0.04em;">Volatility Alert</div>
+          <div style="font-size:1.15rem; font-weight:900; margin-top:0.6rem; color:{WHITE};">{riskiest_sector}</div>
+          <div style="font-size:0.75rem; color:{SLATE}; margin-top:0.4rem; line-height:1.4;">Rising NPAs and inconsistent credit discipline detected.</div>
         </div>
         """, unsafe_allow_html=True)
     with o3:
         st.markdown(f"""
-        <div class="outlook-card" style="border-left:3px solid #4A90D9;">
-          <div style="font-size:0.65rem; font-weight:700; text-transform:uppercase; color:#8A93A6;">Growth Frontier</div>
-          <div style="font-size:1.1rem; font-weight:800; margin-top:0.4rem;">Retail</div>
-          <div style="font-size:0.75rem; color:#64748B; margin-top:0.3rem;">15.9% RBI Growth YoY implies high absorption capacity.</div>
+        <div class="kpi-card" style="border-left:4px solid {PINK};">
+          <div style="font-size:0.7rem; font-weight:800; text-transform:uppercase; color:{PINK}; letter-spacing:0.04em;">Growth Frontier</div>
+          <div style="font-size:1.15rem; font-weight:900; margin-top:0.6rem; color:{WHITE};">Retail</div>
+          <div style="font-size:0.75rem; color:{SLATE}; margin-top:0.4rem; line-height:1.4;">15.90% RBI Growth YoY implies high absorption.</div>
         </div>
         """, unsafe_allow_html=True)
 
@@ -1115,10 +1192,16 @@ with t3:
 #  PAGE 4 — COMPANY PROFILE ANALYSIS
 # ══════════════════════════════════════════════════════════════
 with t4:
-    st.markdown("""
-    <div class="page-header">
-        <h2>🏢 Company Profile Analysis</h2>
-        <p>Real profile attributes with engineered score overlays</p>
+    st.markdown(f"""
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:2.5rem;">
+      <div>
+        <h2 style="margin:0; font-size:2rem; font-weight:900; letter-spacing:-0.04em; color:{WHITE};">
+            Company <span style="color:{INDIGO};">Profiles</span>
+        </h2>
+        <p style="margin:4px 0 0; color:{SLATE}; font-size:1rem; font-weight:500;">
+            Real Attribute Analysis & Engineered Credit Overlays
+        </p>
+      </div>
     </div>""", unsafe_allow_html=True)
 
     metro_avg = df.groupby("is_metro")["credit_score"].mean()
@@ -1139,7 +1222,9 @@ with t4:
             ))
         fig_scatter.update_layout(title="Company Age vs Credit Score (by Sector)")
         st.plotly_chart(styled_chart(fig_scatter), use_container_width=True, config={"displayModeBar": False})
-        st.markdown(f"""<div class="insight-box">💡 Clear upward trend — companies aged 10+ years score ~25 pts higher than new entrants as tenure de-risks lender exposure.</div>""", unsafe_allow_html=True)
+        st.markdown(f"""<div style="margin-top:1rem; padding:0.75rem 1rem; background:rgba(99,102,241,0.05); border:1px solid rgba(99,102,241,0.1); border-radius:12px; font-size:0.85rem; color:{SLATE};">
+            💡 <b style="color:{WHITE};">Vintage Edge:</b> Companies aged 10+ years score ~25 pts higher as tenure de-risks lender exposure.
+        </div>""", unsafe_allow_html=True)
 
     with c2:
         fig_violin = go.Figure()
@@ -1158,7 +1243,9 @@ with t4:
                 ))
         fig_violin.update_layout(title="Credit Score Distribution by Capital Tier")
         st.plotly_chart(styled_chart(fig_violin), use_container_width=True, config={"displayModeBar": False})
-        st.markdown(f"""<div class="insight-box">💡 Medium-tier SMEs have the tightest, highest distribution — proving scale matters for credit quality.</div>""", unsafe_allow_html=True)
+        st.markdown(f"""<div style="margin-top:1rem; padding:0.75rem 1rem; background:rgba(99,102,241,0.05); border:1px solid rgba(99,102,241,0.1); border-radius:12px; font-size:0.85rem; color:{SLATE};">
+            💡 <b style="color:{WHITE};">Scale Matters:</b> Medium-tier SMEs show the tightest, highest distributions across most sectors.
+        </div>""", unsafe_allow_html=True)
 
     st.markdown("<br>", unsafe_allow_html=True)
     c3, c4 = st.columns(2)
@@ -1197,10 +1284,16 @@ with t4:
 #  PAGE 5 — HIDDEN OPPORTUNITIES
 # ══════════════════════════════════════════════════════════════
 with t5:
-    st.markdown("""
-    <div class="page-header">
-        <h2>💰 Hidden Opportunity Finder</h2>
-        <p>Engineered opportunity cohort: score/rules over real company records</p>
+    st.markdown(f"""
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:2.5rem;">
+      <div>
+        <h2 style="margin:0; font-size:2rem; font-weight:900; letter-spacing:-0.04em; color:{WHITE};">
+            Hidden <span style="color:{PINK};">Opportunities</span>
+        </h2>
+        <p style="margin:4px 0 0; color:{SLATE}; font-size:1rem; font-weight:500;">
+            Engineered Opportunity Cohorts: High Score / Low Capital
+        </p>
+      </div>
     </div>""", unsafe_allow_html=True)
 
     opp_states_n    = opp_df["State"].nunique()
@@ -1216,10 +1309,19 @@ with t5:
     o4.markdown(kpi_card_animated(f"{opp_avg_score:.1f}", "Avg Opp. Score", color="#4A90D9"), unsafe_allow_html=True)
 
     st.markdown(f"""
-    <div class="opp-box" style="margin-top:1rem;">
-        💰 <b>These {opp_count} SMEs are creditworthy but likely underserved by traditional lenders due to small
-        capital size</b> — representing a high-yield, lower-risk lending frontier across {opp_states_n} Indian states.
-        Estimated addressable base: <b>₹{opp_cap_cr:.0f} Cr</b>.
+    <div style="
+        margin-top:1rem; padding:1.2rem; background:rgba(236,72,153,0.05); 
+        border:1px solid rgba(236,72,153,0.1); border-radius:16px;
+    ">
+        <div style="font-size:0.75rem; font-weight:800; text-transform:uppercase; color:{PINK}; letter-spacing:0.04em; margin-bottom:8px;">
+            Investment Frontier Summary
+        </div>
+        <div style="font-size:1.0rem; color:{WHITE}; font-weight:600; line-height:1.5;">
+            These {opp_count} SMEs are creditworthy but likely underserved by traditional lenders due to small capital size.
+        </div>
+        <div style="font-size:0.85rem; color:{SLATE}; margin-top:6px;">
+            Estimated addressable base: <b style="color:{WHITE};">₹{opp_cap_cr:.0f} Cr</b> across {opp_states_n} Indian states.
+        </div>
     </div>""", unsafe_allow_html=True)
 
     st.markdown("<br>", unsafe_allow_html=True)
@@ -1278,10 +1380,16 @@ with t5:
 #  PAGE 6 — SCORE AN SME
 # ══════════════════════════════════════════════════════════════
 with t6:
-    st.markdown("""
-    <div class="page-header">
-        <h2>🧮 Score an SME</h2>
-        <p>Interactive what-if scoring using the same transparent rule logic used in the platform</p>
+    st.markdown(f"""
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:2.5rem;">
+      <div>
+        <h2 style="margin:0; font-size:2rem; font-weight:900; letter-spacing:-0.04em; color:{WHITE};">
+            Score an <span style="color:{PINK};">SME</span>
+        </h2>
+        <p style="margin:4px 0 0; color:{SLATE}; font-size:1rem; font-weight:500;">
+            Interactive What-If Scoring · Transparent Methodology
+        </p>
+      </div>
     </div>""", unsafe_allow_html=True)
 
     st.markdown("""
@@ -1351,17 +1459,25 @@ with t6:
         )
 
         st.markdown(f"""
-        <div style="position:relative; background:#1E2130; border-radius:16px; padding:2rem; text-align:center; overflow:hidden; border:1px solid #2D3748; margin-top:1.5rem;">
-          <!-- Border Beam simulation -->
-          <div style="position:absolute; inset:-1px; border-radius:16px;
-            background: conic-gradient(from var(--angle), transparent 80%, {color} 90%, #4A90D9 95%, transparent 100%);
-            animation: borderSpin 3s linear infinite; --angle: 0deg;
+        <div style="position:relative; background:rgba(255,255,255,0.03); border-radius:24px; padding:3rem 2rem; text-align:center; overflow:hidden; border:1px solid var(--glass-border); margin-top:2rem;">
+          <!-- Refined Border Beam -->
+          <div style="position:absolute; inset:-1px; border-radius:24px;
+            background: conic-gradient(from var(--angle), transparent 70%, {INDIGO} 85%, {PINK} 95%, transparent 100%);
+            animation: borderSpin 4s linear infinite; --angle: 0deg;
             mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask-composite: exclude; padding:1px;"></div>
-          <div style="font-size:4.5rem; font-weight:900; color:{color}; line-height:1;">{score}</div>
-          <div style="font-size:0.85rem; color:#8A93A6; margin-top:0.25rem;">Credit Score / 100</div>
-          <div style="font-size:1.1rem; font-weight:700; color:#F1F5F9; margin-top:1rem;">{verdict}</div>
-          <div style="font-size:0.75rem; color:#8A93A6; margin-top:0.5rem; opacity:0.8;">
+            mask-composite: exclude; padding:2px;"></div>
+            
+          <div style="font-size:0.85rem; font-weight:800; text-transform:uppercase; color:{SLATE}; letter-spacing:0.1em; margin-bottom:1rem;">
+            Unified Credit Score
+          </div>
+          <div style="font-size:6rem; font-weight:950; letter-spacing:-0.05em; background: linear-gradient(135deg, {WHITE} 30%, {SLATE} 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height:1;">
+            {score}
+          </div>
+          <div style="font-size:1.2rem; font-weight:700; color:{color}; margin-top:1.5rem; text-transform:uppercase; letter-spacing:0.02em;">
+            {verdict}
+          </div>
+          <div style="height:1px; background:var(--glass-border); margin:1.5rem auto; width:60px;"></div>
+          <div style="font-size:0.9rem; color:{SLATE}; font-weight:500;">
             {sector} · {tier} · {state} · {age}y · GST {gst}%
           </div>
         </div>
@@ -1372,29 +1488,28 @@ with t6:
 #  PAGE 7 — MODEL CARD
 # ══════════════════════════════════════════════════════════════
 with t7:
-    st.markdown("""
-    <div class="page-header">
-        <h2>🔬 Model Card — Transparency & Methodology</h2>
-        <p>Predictive-model disclosure · Engineered label logic · Real-data roadmap</p>
+    st.markdown(f"""
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:2.5rem;">
+      <div>
+        <h2 style="margin:0; font-size:2rem; font-weight:900; letter-spacing:-0.04em; color:{WHITE};">
+            Model <span style="color:{PINK};">Card</span>
+        </h2>
+        <p style="margin:4px 0 0; color:{SLATE}; font-size:1rem; font-weight:500;">
+            Transparency · Methodology · Real-Data Roadmap
+        </p>
+      </div>
     </div>""", unsafe_allow_html=True)
 
     # ── SYNTHETIC DATA DISCLAIMER (top-of-page, hard to miss) ──
     st.markdown(f"""
-    <div style="background:rgba(255,107,107,0.10); border:2px solid #FF6B6B; border-radius:10px;
-                padding:1.1rem 1.4rem; margin-bottom:1.2rem;">
-        <div style="font-size:1rem; font-weight:700; color:#FF6B6B; margin-bottom:6px;">
-            ⚠️ Critical Disclosure: This Is Synthetic Data
+    <div style="background:rgba(236,72,153,0.05); border:1px solid rgba(236,72,153,0.15); border-radius:16px; padding:1.5rem; margin-bottom:2rem;">
+        <div style="font-size:0.85rem; font-weight:800; text-transform:uppercase; color:{PINK}; letter-spacing:0.05em; margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+            <span style="font-size:1.2rem;">⚠️</span> Critical Disclosure: Synthetic Data
         </div>
-        <div style="font-size:0.83rem; color:#FFAAAA; line-height:1.7;">
-            <b>default_risk is deterministically derived from a scoring formula</b> — not from actual
-            loan performance, CIBIL bureau data, or RBI NPA records. The XGBoost AUC of
-            <b>{metrics["auc_roc"]:.4f}</b> is high because the model is learning the rules <i>built into</i>
-            the generator, not discovering latent real-world credit risk. This platform demonstrates
-            <b>analytical methodology and engineering competence</b>, not live underwriting capability.
-            <br><br>
-            The phrase "MCA21/RBI/SIDBI calibrated" means the <i>distributional parameters</i>
-            (state weights, sector NPA tiers, capital distribution shape) are informed by published
-            aggregate data — not that individual records are verified against any registry.
+        <div style="font-size:0.95rem; color:{SLATE}; line-height:1.6; font-weight:450;">
+            <b>default_risk is deterministically derived from a scoring formula</b> — not from actual loan performance or bureau records. 
+            The high AUC of <b style="color:{WHITE};">{metrics["auc_roc"]:.4f}</b> reflects rule-learning, not discovery of latent risk. 
+            This represents <b>engineering methodology</b>, not live underwriting capability.
         </div>
     </div>""", unsafe_allow_html=True)
 
@@ -1588,10 +1703,16 @@ with t7:
 #  PAGE 7 — LIVE RBI DATA
 # ══════════════════════════════════════════════════════════════
 with t8:
-    st.markdown("""
-    <div class="page-header">
-        <h2>📡 Live RBI Data — Real Sector Credit Intelligence</h2>
-        <p>Source: RBI Sectoral Deployment of Bank Credit, January 2026 &nbsp;|&nbsp; This page is real-data only</p>
+    st.markdown(f"""
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:2.5rem;">
+      <div>
+        <h2 style="margin:0; font-size:2rem; font-weight:900; letter-spacing:-0.04em; color:{WHITE};">
+            RBI <span style="color:{PINK};">Data</span>
+        </h2>
+        <p style="margin:4px 0 0; color:{SLATE}; font-size:1rem; font-weight:500;">
+            Real-Time Sectoral Credit Intelligence · Statement 1 & 2
+        </p>
+      </div>
     </div>""", unsafe_allow_html=True)
 
     rbi_stats = [
@@ -1602,10 +1723,10 @@ with t8:
     ]
     ticker_html = " &nbsp;&nbsp; · &nbsp;&nbsp; ".join(rbi_stats)
     st.markdown(f"""
-    <div style="overflow:hidden; background:#12151F; border:1px solid #2D3748;
-                border-radius:8px; padding:0.6rem 0; margin-bottom:1rem;">
-      <div style="display:inline-block; white-space:nowrap; animation: marquee 28s linear infinite;
-                  color:#00D4AA; font-size:0.8rem; font-weight:500;">
+    <div style="overflow:hidden; background:rgba(236,72,153,0.03); border:1px solid rgba(236,72,153,0.1); 
+                border-radius:12px; padding:0.8rem 0; margin-bottom:2rem;">
+      <div style="display:inline-block; white-space:nowrap; animation: marquee 30s linear infinite;
+                  color:{PINK}; font-size:0.85rem; font-weight:700; letter-spacing:0.02em; text-transform:uppercase;">
         {ticker_html} &nbsp;&nbsp; · &nbsp;&nbsp; {ticker_html}
       </div>
     </div>
@@ -1727,16 +1848,34 @@ with t8:
 # FOOTER — PREMIUM FROSTED GLASS
 # ─────────────────────────────────────────────────────────────
 st.markdown(f"""
-<div class="premium-footer">
-    <div style="font-size:1.2rem; margin-bottom:8px;">🇮🇳</div>
-    <div style="font-size:0.78rem; color:#4A6A8A; line-height:1.8;">
-        <span style="font-weight:600; color:#6B8CA8;">India SME Credit Risk & Growth Intelligence Platform</span>
+<div style="
+    margin-top: 5rem;
+    padding: 3rem 1rem;
+    border-top: 1px solid var(--glass-border);
+    text-align: center;
+    background: linear-gradient(180deg, transparent, rgba(99,102,241,0.03));
+">
+    <div style="
+        font-size: 1.5rem; 
+        margin-bottom: 1.5rem;
+        background: linear-gradient(90deg, {INDIGO}, {PINK});
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+    ">
+        SME Credit Platform 2.0
+    </div>
+    <div style="font-size:0.85rem; color:{SLATE}; line-height:1.8; max-width:600px; margin:0 auto;">
+        <span style="font-weight:600; color:{WHITE};">India SME Credit Risk & Growth Intelligence Platform</span>
         <br>
-        Bengaluru, 2026 &nbsp;·&nbsp; Built with ❤️ using Streamlit + XGBoost + Plotly
+        Engineered for transparency, built for scale. 🇮🇳
         <br>
-        Data mode: <span style="color:#00C9A7;">Real MCA/RBI where available</span> + engineered predictive fields (credit_score/default_risk/is_opportunity)
-        &nbsp;·&nbsp;
-        <a href="https://github.com/RishabJainhub">GitHub ↗</a>
+        <div style="margin-top:1rem; display:flex; justify-content:center; gap:20px; font-weight:700;">
+            <a href="https://github.com/RishabJainhub" style="color:{INDIGO}; text-decoration:none;">GitHub ↗</a>
+            <span style="color:var(--glass-border);">|</span>
+            <span style="color:{PINK};">Phase 6 Pro Deployment</span>
+        </div>
     </div>
 </div>
 """, unsafe_allow_html=True)
