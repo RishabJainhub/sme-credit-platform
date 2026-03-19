@@ -1,51 +1,69 @@
-# 🇮🇳 India SME Credit Risk & Growth Intelligence Platform
+# SME Credit Risk Platform | Magic UI 2.0 🚀
 
-[![Live Dashboard](https://img.shields.io/badge/Live-Dashboard-6366F1?style=for-the-badge&logo=streamlit)](https://sme-credit-platform-2jakubphu4fy7ukhbkwmst.streamlit.app/)
-[![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![XGBoost](https://img.shields.io/badge/XGBoost-1.7+-EC4899?style=for-the-badge&logo=xgboost&logoColor=white)](https://xgboost.readthedocs.io)
+[![Lint and Quality Check](https://github.com/RishabJainhub/sme-credit-platform/actions/workflows/lint.yml/badge.svg)](https://github.com/RishabJainhub/sme-credit-platform/actions/workflows/lint.yml)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://sme-credit-platform-2jakubphu4fy7ukhbkwmst.streamlit.app/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/release/python-3120/)
 
-## 📌 Problem Statement
+A high-fidelity financial intelligence dashboard designed for real-time risk assessment and geographic credit distribution analysis. Built with **Magic UI 2.0** principles, featuring a premium glassmorphism aesthetic and calibrated against **RBI Jan 2026 Sectoral Deployment** data.
 
-India's 63M+ MSME sector faces a **₹25 trillion formal credit gap**. Traditional lending models often fail to capture the granular risk profiles of micro-enterprises, leading to information asymmetry and underserved high-potential clusters. This platform bridges that gap by providing a high-fidelity, data-driven intelligence layer for fintech lenders.
+![Overview Dashboard](file:///Users/rishabpjain/.gemini/antigravity/brain/2aab0b0b-abb9-4033-88f4-7974dcfcd7f3/overview_dashboard_1773944942198.png)
 
-## 🌟 What This Does
+## 🏗️ Architecture & Flow
 
-An end-to-end credit intelligence dashboard that stratifies risk across **5,000 SMEs** and **36 Indian States/UTs**. It leverages real-world **RBI Sectoral Deployment (Jan 2026)** data to calibrate risk weights, identifying "Hidden Opportunity" cohorts where creditworthiness meets underserved capital needs.
+The platform utilizes a modular Python backend with an XGBoost-driven inference engine, validated against macro-level credit deployment tables.
 
-## 🔗 Live Demo
+```mermaid
+graph TD
+    A[RBI Data Scraper] --> B[Sectoral Calibration]
+    B --> C[XGBoost Inference]
+    D[SME Raw Data] --> C
+    C --> E[Magic UI Dashboard]
+    E --> F[Risk Stratification]
+    E --> G[Geographic Analysis]
+```
+> [!NOTE]  
+> View the full [Technical Architecture](docs/ARCHITECTURE.md) for a deep dive into the data pipeline and model calibration.
 
-Explore the platform here: **[sme-credit-platform.streamlit.app](https://sme-credit-platform-2jakubphu4fy7ukhbkwmst.streamlit.app/)**
-
----
-
-![Dashboard Overview](file:///Users/rishabpjain/.gemini/antigravity/brain/2aab0b0b-abb9-4033-88f4-7974dcfcd7f3/main_dashboard_1773931718971.png)
-
-## 📊 Key Findings
-
-- **Sectoral Risk**: Construction and F&B segments show the highest NPA probability (averaging 12-18% higher than IT Services).
-- **Growth Frontier**: Identified **840+ SMEs** meeting "Prime" credit standards (Score > 65) despite belonging to micro-capitalization tiers (<₹50L).
-- **Geographic Skew**: Maharashtra and Karnataka dominate the opportunity landscape, but emerging clusters in Uttar Pradesh and Telangana show significant credit-demand momentum.
-
-## 🔬 Methodology
-
-- **Data Calibration**: Individual SME records are synthesized using distributional parameters from the **RBI Sectoral Deployment of Bank Credit Reports (Jan 2026)** and **MCA Master Data** proxies.
-- **ML Engine**: Utilizes an **XGBoost Classifier** (AUC: 0.8685) trained on a 4-factor default proxy (Age, Capital Vintage, State-level NPA exposure, and Sectoral Volatility).
-- **Volume**: 5,000 unique entities stratified across 36 States/UTs and 6 Industry Sectors.
+## ✨ Key Features
+- **Command Center**: Real-time sector risk and executive sentiment hub.
+- **Interactive Scoring**: "Score an SME" what-if tool with transparent methodology.
+- **Geographic Intelligence**: Heatmaps covering all 36 Indian States and UTs.
+- **RBI Calibration**: High-frequency sync with sectoral credit deployment metrics.
+- **Elite Design**: Premium glassmorphism, bento grids, and micro-animations.
 
 ## 🛠️ Tech Stack
+| Layer | Technologies |
+| :--- | :--- |
+| **Frontend** | Streamlit, Modular CSS (Magic UI 2.0) |
+| **Data** | Pandas, NumPy, Scrapy |
+| **ML** | XGBoost, Scikit-learn |
+| **Visuals** | Plotly Graph Objects, Mermaid.js |
+| **CI/CD** | GitHub Actions (Quality/Lint) |
 
-- **Core**: Python 3.9+
-- **ML**: XGBoost, Scikit-Learn
-- **Dashboard**: Streamlit (Magic UI 2.0 Design System)
-- **Visualization**: Plotly, Pandas
-- **Styling**: Premium Glassmorphism (Custom CSS / Indigo & Pink Palette)
+## 🚀 Setup & Execution
 
-## 🚀 Setup & Local Execution
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/RishabJainhub/sme-credit-platform.git
+   cd sme-credit-platform
+   ```
 
-1. **Clone repository**: `git clone https://github.com/RishabJainhub/sme-credit-platform.git`
-2. **Install dependencies**: `pip install -r requirements.txt`
-3. **Generate Dataset**: `python generate_real_data.py` (Calibrates against latest RBI macro stats)
-4. **Launch Application**: `streamlit run app.py`
+2. **Install dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Run the dashboard**:
+   ```bash
+   streamlit run app.py
+   ```
+
+## 🤝 Contributing
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+
+## ⚖️ License
+Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
-© 2026 | Developed for Admissions Excellence
+Created with ❤️ by [Rishab Jain](https://github.com/RishabJainhub)
