@@ -6,6 +6,7 @@
 [![XGBoost](https://img.shields.io/badge/XGBoost-1.7%2B-FF6600?style=flat-square&logo=xgboost&logoColor=white)](https://xgboost.readthedocs.io)
 [![Streamlit](https://img.shields.io/badge/UI-Premium_Glassmorphism-00C9A7?style=flat-square)](https://streamlit.io)
 [![Data](https://img.shields.io/badge/Data-Real_RBI_Jan'26-FF4B4B?style=flat-square)](https://rbi.org.in)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/)
 
 ---
 
@@ -41,7 +42,7 @@ India's 63M+ MSME sector faces a **₹25 trillion formal credit gap**. This plat
 
 ## 📂 Simplified Project Structure
 
-```
+```bash
 sme_credit_platform/
 │
 ├── data/
