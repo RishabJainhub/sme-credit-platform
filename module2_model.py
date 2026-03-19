@@ -2,9 +2,9 @@
 MODULE 2 — XGBOOST CREDIT RISK MODEL
 India SME Credit Risk & Growth Intelligence Platform
 =====================================================
-Trains XGBoost binary classifier on DEFAULT_RISK.
+Trains XGBoost binary classifier on default_risk.
 Features: Age, Multiple Directors (engineered), Metro, Sector Risk, Log-Capital
-⚠️ SYNTHETIC DATA NOTICE: DEFAULT_RISK is rule-derived, not from actual loan
+⚠️ SYNTHETIC DATA NOTICE: default_risk is rule-derived, not from actual loan
    performance data. This model demonstrates methodology, not live credit decisions.
 """
 
@@ -31,27 +31,32 @@ os.makedirs("outputs", exist_ok=True)
 # ─────────────────────────────────────────
 # LOAD DATA (REAL-WORLD CALIBRATED)
 # ─────────────────────────────────────────
-df = pd.read_csv("data/sme_clean_real.csv")
-print(f"Loaded {len(df)} records from data/sme_clean_real.csv")
-print(f"Class balance — DEFAULT_RISK:\n{df['DEFAULT_RISK'].value_counts().to_string()}\n")
+df = pd.read_csv("data/india_sme_dataset_REAL.csv")
+print(f"Loaded {len(df)} records from data/india_sme_dataset_REAL.csv")
+print(f"Class balance — default_risk:\n{df['default_risk'].value_counts().to_string()}\n")
 
 # ─────────────────────────────────────────
 # FEATURE ENGINEERING
 # ─────────────────────────────────────────
-df["LOG_CAP"] = np.log1p(df["PAID_UP_CAPITAL"])
-df["HAS_MULTIPLE_DIRECTORS"] = (df["DIRECTOR_COUNT"] > 1).astype(int)
-df["IS_METRO"] = (df["STATE"].isin(["Delhi", "Maharashtra", "Karnataka", "Tamil Nadu", "Telangana"])).astype(int)
+df["log_cap"] = np.log1p(df["paid_up_capital"])
+df["has_multiple_directors"] = (df["director_count"] > 1).astype(int)
+df["is_metro"] = (df["state"].isin(["Delhi", "Maharashtra", "Karnataka", "Tamil Nadu", "Telangana"])).astype(int)
 
 FEATURES = [
-    "AGE_YEARS",
-    "HAS_MULTIPLE_DIRECTORS",
-    "IS_METRO",
-    "SECTOR_RISK_SCORE",
-    "LOG_CAP"
+    "age_years",
+    "has_multiple_directors",
+    "is_metro",
+    "sector_risk_score",
+    "log_cap"
 ]
-TARGET = "DEFAULT_RISK"
+TARGET = "default_risk"
 
-X = df[FEATURES]
+LEAKING_COLUMNS = ["credit_score", "is_opportunity", "risk_category", "creditworthy", TARGET]
+unexpected_features = [c for c in LEAKING_COLUMNS if c in FEATURES]
+if unexpected_features:
+    raise ValueError(f"Leakage features detected in FEATURES: {unexpected_features}")
+
+X = df[FEATURES].copy()
 y = df[TARGET]
 
 # ─────────────────────────────────────────
@@ -88,6 +93,8 @@ print("INITIAL MODEL RESULTS")
 print("=" * 55)
 print(classification_report(y_test, y_pred, target_names=["Low Risk", "High Risk"]))
 print(f"AUC-ROC Score : {auc:.4f}")
+if auc >= 0.93:
+    print("⚠️  AUC is very high for SME tabular risk. Re-check leakage and label construction.")
 
 # ─────────────────────────────────────────
 # AUTO-TUNE IF AUC < 0.75
@@ -184,7 +191,7 @@ fig_fi.text(0.02, 0.01, insight, fontsize=8.5, color="#AAAAAA",
 
 # Synthetic data disclaimer
 disclaimer = (
-    "⚠️ SYNTHETIC DATA NOTICE: DEFAULT_RISK is rule-derived, not from actual loan performance data.\n"
+    "⚠️ SYNTHETIC DATA NOTICE: default_risk is rule-derived, not from actual loan performance data.\n"
     "This model demonstrates methodology, not live credit decisions."
 )
 fig_fi.text(0.02, 0.92, disclaimer, fontsize=7.5, color="#FF6B6B",

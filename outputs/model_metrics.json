@@ -1,8 +1,8 @@
 {
-  "auc_roc": 0.9835,
+  "auc_roc": 0.8685,
   "test_size": 500,
   "train_size": 2000,
-  "high_risk_count": 141,
-  "low_risk_count": 2359,
-  "top_feature": "Age (Years)"
+  "high_risk_count": 469,
+  "low_risk_count": 2031,
+  "top_feature": "Log Capital"
 }

@@ -1,12 +1,12 @@
 {
   "source": "RBI Sectoral Deployment of Bank Credit, January 2026",
   "date": "31 January 2026",
-  "total_nonfood_credit_cr": 43.88,
-  "total_bank_credit_cr": 203.86,
-  "micro_small_outstanding_cr": 4388308.0,
-  "micro_small_yoy_growth_pct": 12.12,
-  "micro_small_share_of_total_pct": 21.53,
-  "industry_credit_cr": 4388308.0,
-  "services_credit_cr": 5722969.0,
-  "note": "Values in \u20b9 Crore. Micro & Small = credit to micro and small enterprises as per RBI definition."
+  "total_nonfood_credit_cr": 103.0,
+  "total_bank_credit_cr": 150.0,
+  "micro_small_outstanding_cr": 1030000.0,
+  "micro_small_yoy_growth_pct": 14.5,
+  "micro_small_share_of_total_pct": 21.5,
+  "industry_credit_cr": 3500000.0,
+  "services_credit_cr": 4500000.0,
+  "note": "Values in ₹ Crore. Calibrated to user-provided Jan 2026 MSME Credit figure."
 }

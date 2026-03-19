@@ -1,0 +1,5 @@
+{
+  "rbi_msme_credit.csv": "failed_HTTPError",
+  "rbi_sectoral_credit.csv": "failed_HTTPError",
+  "rbi_npa_ratio.csv": "failed_HTTPError"
+}
