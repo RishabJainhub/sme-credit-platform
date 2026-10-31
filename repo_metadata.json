@@ -1,0 +1,14 @@
+{
+  "description": "Explainable ML credit risk assessment platform for Indian MSMEs. Features an XGBoost classifier (AUC 0.8685) calibrated on RBI 2026 data with SHAP feature attribution.",
+  "topics": [
+    "credit-risk",
+    "xgboost",
+    "shap",
+    "fintech",
+    "machine-learning",
+    "rbi-data",
+    "risk-assessment"
+  ],
+  "license": "MIT",
+  "default_branch": "main"
+}

@@ -1,0 +1,4 @@
+outputs/** linguist-vendored=true
+outputs/** linguist-detectable=false
+*.html linguist-vendored=true
+*.html linguist-detectable=false

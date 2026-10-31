@@ -42,16 +42,16 @@ A real-time financial intelligence dashboard for credit risk assessment, process
 ---
 
 ### 🌱 I'm currently...
-- **Learning**: Advanced Prompt Engineering and Multi-Agent Orchestration.
-- **Building**: Enterprise-grade market research pipelines using n8n and Perplexity.
-- **Applying**: Aiming for top-tier MSc programs in Business Analytics and AI.
+- **Education**: MSc Business with Consulting @ Warwick Business School | BBA Distinction @ Christ University.
+- **Building**: Production ML financial intelligence platforms and multi-agent workflow systems.
+- **Focus**: Quantitative finance, credit risk modeling (XGBoost/SHAP), and LLM-driven research architectures.
 
 ---
 
 ### 📫 Let's Connect!
-- **LinkedIn**: [Rishab Jain](https://www.linkedin.com/in/rishabpjain/) (Update this link!)
-- **Website**: [Your Portfolio](https://your-portfolio.com) (Update this link!)
-- **Email**: [rishab@example.com](mailto:rishab@example.com)
+- **LinkedIn**: [Rishab P Jain](https://www.linkedin.com/in/rishab-p-jain/)
+- **GitHub**: [RishabJainhub](https://github.com/RishabJainhub)
+- **Email**: [rishabprakashjain12@gmail.com](mailto:rishabprakashjain12@gmail.com)
 
 ---
 *"Building the future of financial intelligence, one commit at a time."*

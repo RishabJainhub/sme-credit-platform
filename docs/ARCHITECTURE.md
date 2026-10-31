@@ -25,14 +25,14 @@ sme-credit-platform/
 
 ## Data Flow
 ```mermaid
-graph TD
-    A[RBI Public Data] -->|Scraper| B(fetch_rbi_data.py)
-    B -->|Parser| C(parse_rbi_data.py)
-    C -->|JSON| D{Data Store}
-    E[SME Repository] -->|CSV| D
-    D -->|Inference Engine| F[XGBoost Predictor]
-    F -->|Output| G[Streamlit Dashboard]
-    G -->|User Experience| H[Portfolio Showcase]
+flowchart TD
+    A["RBI Public Data"] -->|Scraper| B["fetch_rbi_data.py"]
+    B -->|Parser| C["parse_rbi_data.py"]
+    C -->|JSON| D["Data Store"]
+    E["SME Repository"] -->|CSV| D
+    D -->|Inference Engine| F["XGBoost Predictor"]
+    F -->|Output| G["Streamlit Dashboard"]
+    G -->|User Experience| H["Portfolio Showcase"]
 ```
 
 ## Design Philosophy
